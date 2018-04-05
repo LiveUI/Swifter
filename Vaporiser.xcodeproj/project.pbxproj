@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		15116D86207678E700BC08D3 /* Vaporiser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15116D84207678E700BC08D3 /* Vaporiser.xcdatamodeld */; };
 		15116D88207679B200BC08D3 /* SPMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D87207679B200BC08D3 /* SPMManager.swift */; };
+		15116D9020769AB000BC08D3 /* NSMenuItem+SPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D8F20769AB000BC08D3 /* NSMenuItem+SPM.swift */; };
+		15116D9220769C0300BC08D3 /* SPM+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D9120769C0300BC08D3 /* SPM+Tools.swift */; };
+		15116D9520769FC600BC08D3 /* Dialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D9420769FC600BC08D3 /* Dialogs.swift */; };
 		73EB24DC06D719F6AA376BDA /* Pods_VaporiserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F81CACEC8687F2CFB1815B /* Pods_VaporiserTests.framework */; };
 		8F519E1F864C22A30060BC91 /* Pods_Vaporiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62DD356516E7BFDC06CBA7E /* Pods_Vaporiser.framework */; };
 		BEEB328FF3808E11056019AD /* Pods_VaporiserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2EC5E637CE532E5C05A579 /* Pods_VaporiserUITests.framework */; };
@@ -40,6 +43,9 @@
 /* Begin PBXFileReference section */
 		15116D85207678E700BC08D3 /* Vaporiser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vaporiser.xcdatamodel; sourceTree = "<group>"; };
 		15116D87207679B200BC08D3 /* SPMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPMManager.swift; sourceTree = "<group>"; };
+		15116D8F20769AB000BC08D3 /* NSMenuItem+SPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+SPM.swift"; sourceTree = "<group>"; };
+		15116D9120769C0300BC08D3 /* SPM+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPM+Tools.swift"; sourceTree = "<group>"; };
+		15116D9420769FC600BC08D3 /* Dialogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogs.swift; sourceTree = "<group>"; };
 		152BAC661E8519FD00A0F78D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		152BAC671E8519FD00A0F78D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		160064F3135589AF74964D95 /* Pods-Vaporiser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vaporiser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vaporiser/Pods-Vaporiser.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,9 +102,27 @@
 		15116D80207675BE00BC08D3 /* SPM */ = {
 			isa = PBXGroup;
 			children = (
+				15116D8E20769A9300BC08D3 /* Extensions */,
 				15116D87207679B200BC08D3 /* SPMManager.swift */,
 			);
 			path = SPM;
+			sourceTree = "<group>";
+		};
+		15116D8E20769A9300BC08D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15116D8F20769AB000BC08D3 /* NSMenuItem+SPM.swift */,
+				15116D9120769C0300BC08D3 /* SPM+Tools.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		15116D9320769FBC00BC08D3 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				15116D9420769FC600BC08D3 /* Dialogs.swift */,
+			);
+			path = Libs;
 			sourceTree = "<group>";
 		};
 		72E9CD48B988058A648D5A5C /* Pods */ = {
@@ -151,6 +175,7 @@
 		ECA602651E829424000F40FD /* Vaporiser */ = {
 			isa = PBXGroup;
 			children = (
+				15116D9320769FBC00BC08D3 /* Libs */,
 				15116D80207675BE00BC08D3 /* SPM */,
 				ECA602661E829424000F40FD /* AppDelegate.swift */,
 				ECA602681E829424000F40FD /* Assets.xcassets */,
@@ -374,10 +399,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Vaporiser/Pods-Vaporiser-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Reloaded/Reloaded.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftShell/SwiftShell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reloaded.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftShell.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,8 +499,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15116D9220769C0300BC08D3 /* SPM+Tools.swift in Sources */,
+				15116D9520769FC600BC08D3 /* Dialogs.swift in Sources */,
 				ECA602671E829424000F40FD /* AppDelegate.swift in Sources */,
 				ECF0FFD21E82DD1B00C89C88 /* URL+Tools.swift in Sources */,
+				15116D9020769AB000BC08D3 /* NSMenuItem+SPM.swift in Sources */,
 				15116D88207679B200BC08D3 /* SPMManager.swift in Sources */,
 				15116D86207678E700BC08D3 /* Vaporiser.xcdatamodeld in Sources */,
 			);

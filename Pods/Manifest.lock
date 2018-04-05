@@ -1,12 +1,15 @@
 PODS:
   - Reloaded (1.0.0)
+  - SwiftShell (4.0.0)
 
 DEPENDENCIES:
   - Reloaded
+  - SwiftShell
 
 SPEC CHECKSUMS:
   Reloaded: aa974f6bd06b69ae66e6f3c903dc2befe77142b9
+  SwiftShell: 8aee162293f63a856801464f4184ddb224d833ce
 
-PODFILE CHECKSUM: a7a41ec4073dbc66cd8adb85cbbf9f4dba891b8a
+PODFILE CHECKSUM: d7367bdabdedc8dc626c6abdc2be3c29ec0aeabf
 
 COCOAPODS: 1.4.0

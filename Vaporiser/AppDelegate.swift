@@ -28,6 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return url
     }
     
+    var spmManager = SPMManager()
+    
     // MARK: Application delegate methods
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -40,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Actions
     
     @objc func didTapStatusBarIcon() {
-        let menu: NSMenu = NSMenu.init()
+        var menu: NSMenu = NSMenu()
         
         var item: NSMenuItem = NSMenuItem(title: "Derived data", action: nil, keyEquivalent: "")
         menu.addItem(item)
@@ -53,11 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.addItem(NSMenuItem.separator())
         
-        item = NSMenuItem(title: "SPM", action: nil, keyEquivalent: "")
-        menu.addItem(item)
-        
-        item = NSMenuItem(title: "Add project ...", action: #selector(AppDelegate.selectSPM), keyEquivalent: "")
-        menu.addItem(item)
+        spmManager.addMenu(to: &menu)
         
         menu.addItem(NSMenuItem.separator())
         
@@ -72,38 +70,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 components.removeLast()
             }
             let title = components.joined(separator: "-")
-            item = NSMenuItem(title: title, action: #selector(AppDelegate.deleteOne), keyEquivalent: "")
+            item = NSMenuItem(title: title, action: #selector(deleteOne), keyEquivalent: "")
             menu.addItem(item)
             self.menuItems.append(item)
         }
 
         menu.addItem(NSMenuItem.separator())
         
-        item = NSMenuItem(title: "Quit", action: #selector(AppDelegate.exit), keyEquivalent: "")
+        item = NSMenuItem(title: "Quit", action: #selector(exit), keyEquivalent: "")
         menu.addItem(item)
 
         self.statusItem?.popUpMenu(menu)
-    }
-    
-    // SPM
-    
-    @objc func selectSPM(sender: NSMenuItem) {
-        let dialog = NSOpenPanel()
-        dialog.title = "Select SPM folder"
-        dialog.showsResizeIndicator = true
-        dialog.showsHiddenFiles = false
-        dialog.canChooseDirectories = true
-        dialog.canChooseFiles = false
-        dialog.canCreateDirectories = false
-        dialog.allowsMultipleSelection = false
-        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            guard let result = dialog.url else {
-                return
-            }
-            print(result)
-        } else {
-            return
-        }
     }
     
     // MARK: System

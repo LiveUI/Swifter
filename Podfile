@@ -5,9 +5,9 @@ target 'Vaporiser' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'Reloaded'
+  pod 'SwiftShell'
 
   # Pods for Vaporiser
-
   target 'VaporiserTests' do
     inherit! :search_paths
     # Pods for testing
