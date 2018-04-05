@@ -22,7 +22,7 @@ class SPMManager {
     }
     
     func addMenu(to menu: inout NSMenu) {
-        var item = NSMenuItem(title: "SPM", action: nil, keyEquivalent: "")
+        var item = NSMenuItem(title: "Swift Package Manager", action: nil, keyEquivalent: "")
         menu.addItem(item)
         
         for spm in SPMManager.all() {
@@ -30,19 +30,36 @@ class SPMManager {
             
             let submenu = NSMenu(title: spm.name!)
             
-            item = NSMenuItem(title: "Delete .build folder", action: #selector(deleteBuildFolder), keyEquivalent: "")
+            var exists = buildExists(for: spm.path!)
+            item = NSMenuItem(title: "Delete .build folder", action: exists ? #selector(deleteBuildFolder) : nil, keyEquivalent: "")
             item.target = self
             item.representedObject = spm
             submenu.addItem(item)
-            item = NSMenuItem(title: "Swift build ...", action: #selector(build), keyEquivalent: "")
+            
+            exists = packageResolvedExists(for: spm.path!)
+            item = NSMenuItem(title: "Delete Package.resolved", action: exists ? #selector(deletePackageResolved) : nil, keyEquivalent: "")
             item.target = self
             item.representedObject = spm
             submenu.addItem(item)
-            item = NSMenuItem(title: "Swift generate xcode ...", action: #selector(generateXcode), keyEquivalent: "")
+            
+            submenu.addItem(NSMenuItem.separator())
+            
+            item = NSMenuItem(title: "Swift build", action: #selector(build), keyEquivalent: "")
             item.target = self
             item.representedObject = spm
             submenu.addItem(item)
-            item = NSMenuItem(title: "Remove this item", action: #selector(remove), keyEquivalent: "")
+            item = NSMenuItem(title: "Swift test", action: #selector(test), keyEquivalent: "")
+            item.target = self
+            item.representedObject = spm
+            submenu.addItem(item)
+            item = NSMenuItem(title: "Generate Xcode file", action: #selector(generateXcode), keyEquivalent: "")
+            item.target = self
+            item.representedObject = spm
+            submenu.addItem(item)
+            
+            submenu.addItem(NSMenuItem.separator())
+            
+            item = NSMenuItem(title: "Remove project", action: #selector(remove), keyEquivalent: "")
             item.target = self
             item.representedObject = spm
             submenu.addItem(item)
@@ -84,14 +101,32 @@ class SPMManager {
     }
     
     func packageExists(for path: URL) -> Bool {
-        return FileManager.default.fileExists(atPath: path.appendingPathComponent("package.swift").path)
+        return FileManager.default.fileExists(atPath: path.appendingPathComponent("Package.swift").path)
+    }
+    
+    func packageResolvedExists(for path: String) -> Bool {
+        let url = URL(fileURLWithPath: path)
+        return FileManager.default.fileExists(atPath: url.appendingPathComponent("Package.resolved").path)
+    }
+    
+    func buildExists(for path: String) -> Bool {
+        let url = URL(fileURLWithPath: path)
+        return FileManager.default.fileExists(atPath: url.appendingPathComponent(".build").path)
     }
     
     @objc func deleteBuildFolder(_ sender: NSMenuItem) {
         try! runAndPrint("rm", "-rf", sender.spmItem.path(".build"))
     }
     
+    @objc func deletePackageResolved(_ sender: NSMenuItem) {
+        try! runAndPrint("rm", sender.spmItem.path("Package.resolved"))
+    }
+    
     @objc func build(_ sender: NSMenuItem) {
+        
+    }
+    
+    @objc func test(_ sender: NSMenuItem) {
         
     }
     

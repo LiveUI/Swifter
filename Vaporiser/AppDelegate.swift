@@ -8,6 +8,7 @@
 
 import Cocoa
 import AppKit
+import SwiftShell
 
 
 @NSApplicationMain
@@ -96,13 +97,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func deleteAll(sender: NSMenuItem) {
-        self.deleteDerivedData()
+        deleteDerivedData()
     }
     
     @objc func deleteOne(sender: NSMenuItem) {
         let index: Int = self.menuItems.index(of: sender)!
         let url: URL = self.subDirectories[index]
-        self.deleteDerivedData(url.lastPathComponent)
+        deleteDerivedData(url.lastPathComponent)
     }
     
     func deleteDerivedData(_ subfolder: String? = nil) {
@@ -111,10 +112,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if subfolder != nil {
                 url.appendPathComponent(subfolder!)
             }
-            try FileManager.default.removeItem(at: url)
+            try runAndPrint("rm", "-rf", url.path)
         }
         catch {
-            print(error)
+            Dialog.ok(message: "Error", text: error.localizedDescription)
         }
     }
     
