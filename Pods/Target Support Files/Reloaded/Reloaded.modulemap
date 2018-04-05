@@ -1,0 +1,6 @@
+framework module Reloaded {
+  umbrella header "Reloaded-umbrella.h"
+
+  export *
+  module * { export * }
+}

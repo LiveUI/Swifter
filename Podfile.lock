@@ -1,0 +1,12 @@
+PODS:
+  - Reloaded (1.0.0)
+
+DEPENDENCIES:
+  - Reloaded
+
+SPEC CHECKSUMS:
+  Reloaded: aa974f6bd06b69ae66e6f3c903dc2befe77142b9
+
+PODFILE CHECKSUM: a7a41ec4073dbc66cd8adb85cbbf9f4dba891b8a
+
+COCOAPODS: 1.4.0
