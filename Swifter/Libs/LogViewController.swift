@@ -15,7 +15,10 @@ class LogViewController: NSViewController {
     
     static let `default` = LogViewController()
     
+    var didRequestStop: (() -> Void)?
+    
     var textField: NSTextField!
+    var stop: NSButton!
     
     // MARK: View lifecycle
     
@@ -26,6 +29,7 @@ class LogViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Test field
         textField = NSTextField()
         textField.isBezeled = false
         textField.drawsBackground = false
@@ -44,7 +48,22 @@ class LogViewController: NSViewController {
             make.height.greaterThanOrEqualTo(300)
         }
         
+        // Adding stop button
+        stop = NSButton(title: "Stop", target: self, action: #selector(stop(_:)))
+        view.addSubview(stop)
+        stop.sizeToFit()
         
+        stop.snp.makeConstraints { (make) in
+            make.right.equalTo(textField.snp.right)
+            make.bottom.equalTo(textField.snp.bottom)
+        }
+    }
+    
+    // MARK: Actions
+    
+    @objc func stop(_ sender: NSButton) {
+        sender.isHidden = true
+        didRequestStop?()
     }
     
     // MARK: Events

@@ -13,15 +13,15 @@ import AppKit
 class CarthageManager {
     
     struct Command {
-        let project: SPM
+        let project: Project
         let command: String
     }
     
-    static func all() -> [SPM] {
-        return (try? SPM.query.sort(by: "name").all()) ?? []
+    static func all() -> [Project] {
+        return (try? Project.query.sort(by: "name").all()) ?? []
     }
     
-    func addMenu(to menu: inout NSMenu, project: SPM) {
+    func addMenu(to menu: inout NSMenu, project: Project) {
         if cartfileExists(for: project.path!) {
             menu.addItem(NSMenuItem.separator())
             

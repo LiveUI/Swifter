@@ -12,15 +12,15 @@ import Reloaded
 import SwiftShell
 
 
-extension SPM: Entity { }
+extension Project: Entity { }
 
 
 class ProjectManager {
     
     let carthageManager = CarthageManager()
     
-    static func all() -> [SPM] {
-        return (try? SPM.query.sort(by: "name").all()) ?? []
+    static func all() -> [Project] {
+        return (try? Project.query.sort(by: "name").all()) ?? []
     }
     
     func addMenu(to menu: inout NSMenu) {
@@ -153,16 +153,16 @@ class ProjectManager {
             menu.addItem(spmItem)
         }
         
-        item = NSMenuItem(title: "Add project ...", action: #selector(selectSPM), keyEquivalent: "")
+        item = NSMenuItem(title: "Add project ...", action: #selector(selectProject), keyEquivalent: "")
         item.target = self
         menu.addItem(item)
     }
     
     // MARK: Actions
     
-    @objc func selectSPM(sender: NSMenuItem) {
+    @objc func selectProject(sender: NSMenuItem) {
         let dialog = NSOpenPanel()
-        dialog.title = "Select SPM folder"
+        dialog.title = "Select Project folder"
         dialog.showsResizeIndicator = true
         dialog.showsHiddenFiles = false
         dialog.canChooseDirectories = true
@@ -171,7 +171,7 @@ class ProjectManager {
         dialog.allowsMultipleSelection = false
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let name = dialog.url!.lastPathComponent
-            let spm = try! SPM.new()
+            let spm = try! Project.new()
             spm.name = name
             spm.path = dialog.url!.path
             try! spm.save()

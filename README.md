@@ -1,5 +1,5 @@
 # Swifter
-macOS tool that helps you manage your projects (Xcode, SPM, CocoaPods, Carthage, etc ...) and gives you quick access to Derived Data cleaning and management.
+macOS tool that helps you manage your projects (Xcode, Project, CocoaPods, Carthage, etc ...) and gives you quick access to Derived Data cleaning and management.
 
 <table>
 	<tr>

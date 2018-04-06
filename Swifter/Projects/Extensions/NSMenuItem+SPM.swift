@@ -1,5 +1,5 @@
 //
-//  NSMenuItem+SPM.swift
+//  NSMenuItem+Project.swift
 //  Swifter
 //
 //  Created by Ondrej Rafaj on 05/04/2018.
@@ -12,8 +12,8 @@ import AppKit
 
 extension NSMenuItem {
     
-    var projectItem: SPM {
-        return representedObject as! SPM
+    var projectItem: Project {
+        return representedObject as! Project
     }
     
     var carthageCommand: CarthageManager.Command {

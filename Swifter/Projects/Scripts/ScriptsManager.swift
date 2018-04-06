@@ -10,7 +10,7 @@ import Foundation
 
 
 struct Script {
-    let project: SPM
+    let project: Project
     let path: String
 }
 

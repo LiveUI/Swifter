@@ -1,5 +1,5 @@
 //
-//  SPM+Tools.swift
+//  Project+Tools.swift
 //  Swifter
 //
 //  Created by Ondrej Rafaj on 05/04/2018.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-extension SPM {
+extension Project {
     
     func path(_ pathToAppend: String) -> String {
         let url = URL(fileURLWithPath: path!)

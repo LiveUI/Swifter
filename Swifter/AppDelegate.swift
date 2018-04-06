@@ -45,28 +45,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Console popover
     
-    @objc func togglePopover(_ sender: Any?) {
-        if popover.isShown {
-            closePopover(sender: sender)
-        } else {
-            showPopover(sender: sender)
-        }
-    }
-    
     func showPopover(sender: Any?) {
-        if let button = statusItem!.button {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        if !popover.isShown {
+            if let button = statusItem!.button {
+                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            }
         }
     }
     
     func closePopover(sender: Any?) {
-        popover.performClose(sender)
+        if popover.isShown {
+            popover.performClose(sender)
+        }
     }
     
     // MARK: Actions
     
     @objc func didTapStatusBarIcon() {
         if Shell.running {
+            AppDelegate.main.showPopover(sender: self)
             return
         }
         

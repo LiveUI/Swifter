@@ -28,45 +28,57 @@ class Shell {
         return c
     }
     
-    static func run(project: SPM? = nil, _ command: String, _ args: String...) {
-        AppDelegate.main.togglePopover(self)
-        
+    static func run(project: Project? = nil, _ command: String, _ args: String...) {
+        AppDelegate.main.showPopover(sender: self)
+        LogViewController.default.stop.isHidden = false
         LogViewController.default.textField.stringValue = "[Swifter]: \(command) \(args.joined(separator: " "))\n"
         
-        Shell.running = true
-        let output: SwiftShell.AsyncCommand
-        if let project = project {
-            output = Shell.context(for: project.path!).runAsync(command, args)
-        } else {
-            output = SwiftShell.runAsync(command, args)
-        }
-        output.onCompletion({ (command) in
-            Shell.running = false
-            DispatchQueue.main.async {
-                LogViewController.default.textField.stringValue += "\n[Swifter] Exit code: \(command.exitcode())\n"
+        DispatchQueue.global().async {
+            Shell.running = true
+            let output: SwiftShell.AsyncCommand
+            if let project = project {
+                output = Shell.context(for: project.path!).runAsync(command, args)
+            } else {
+                output = SwiftShell.runAsync(command, args)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                AppDelegate.main.togglePopover(self)
-                LogViewController.default.textField.stringValue = ""
-            }
-        })
-        output.stdout.onOutput { stream in
-            if Shell.running {
-                let string = stream.readSome()  ?? ""
+            output.onCompletion({ (command) in
+                Shell.running = false
                 DispatchQueue.main.async {
-                    LogViewController.default.textField.stringValue += string
+                    LogViewController.default.stop.isHidden = true
+                    LogViewController.default.textField.stringValue += "\n[Swifter] Exit code: \(command.exitcode())\n"
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    AppDelegate.main.closePopover(sender: self)
+                    LogViewController.default.textField.stringValue = ""
+                }
+            })
+            output.stdout.onOutput { stream in
+                if Shell.running {
+                    let string = stream.readSome()  ?? ""
+                    DispatchQueue.main.async {
+                        LogViewController.default.textField.stringValue += string
+                    }
                 }
             }
-        }
-        
-        do {
-            try output.finish()
-        } catch {
-            if let err = error as? CommandError {
-                Dialog.ok(message: "Error", text: err.description)
-            } else {
-                print(error)
-                Dialog.ok(message: "Error", text: error.localizedDescription)
+            
+            LogViewController.default.didRequestStop = {
+                Shell.running = false
+                output.stop()
+            }
+            
+            do {
+                try output.finish()
+            } catch {
+                DispatchQueue.main.async {
+                    AppDelegate.main.closePopover(sender: self)
+                    
+                    if let err = error as? CommandError {
+                        Dialog.ok(message: "Error", text: err.description)
+                    } else {
+                        print(error)
+                        Dialog.ok(message: "Error", text: error.localizedDescription)
+                    }
+                }
             }
         }
     }
