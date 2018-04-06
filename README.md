@@ -13,7 +13,7 @@ macOS tool that helps you manage your projects (Xcode, Project, CocoaPods, Carth
 
 Clone and run, it's not complicated at all :)
 
-Although this app is using [`Cocoapods`](https://cocoapods.org), all has been check in so you shouldn't (in theory) need to run `pod install` at all. ¯\_(ツ)_/¯ 
+Although this app is using [`Cocoapods`](https://cocoapods.org), all has been check in so you shouldn't (in theory) need to run `pod install` at all. ¯\\_(ツ)_/¯ 
 
 ## Usage
 
