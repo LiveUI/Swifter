@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15116D86207678E700BC08D3 /* Vaporiser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15116D84207678E700BC08D3 /* Vaporiser.xcdatamodeld */; };
+		15116D86207678E700BC08D3 /* Swifter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15116D84207678E700BC08D3 /* Swifter.xcdatamodeld */; };
 		15116D88207679B200BC08D3 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D87207679B200BC08D3 /* ProjectManager.swift */; };
 		15116D9020769AB000BC08D3 /* NSMenuItem+SPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D8F20769AB000BC08D3 /* NSMenuItem+SPM.swift */; };
 		15116D9220769C0300BC08D3 /* SPM+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D9120769C0300BC08D3 /* SPM+Tools.swift */; };
@@ -15,7 +15,7 @@
 		15116D992077424800BC08D3 /* ScriptsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D982077424800BC08D3 /* ScriptsManager.swift */; };
 		15116D9C2077477600BC08D3 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15116D9B2077477600BC08D3 /* Shell.swift */; };
 		15348E3020775E9C004DC534 /* CarthageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15348E2F20775E9C004DC534 /* CarthageManager.swift */; };
-		8F519E1F864C22A30060BC91 /* Pods_Vaporiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62DD356516E7BFDC06CBA7E /* Pods_Vaporiser.framework */; };
+		15348E3220776C94004DC534 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15348E3120776C94004DC534 /* LogViewController.swift */; };
 		CB69918B211A557C61F294BC /* Pods_Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC09C1DC4F3F424842A88254 /* Pods_Swifter.framework */; };
 		ECA602671E829424000F40FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA602661E829424000F40FD /* AppDelegate.swift */; };
 		ECA602691E829424000F40FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA602681E829424000F40FD /* Assets.xcassets */; };
@@ -34,23 +34,15 @@
 		152BAC661E8519FD00A0F78D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		152BAC671E8519FD00A0F78D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		15348E2F20775E9C004DC534 /* CarthageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarthageManager.swift; sourceTree = "<group>"; };
-		160064F3135589AF74964D95 /* Pods-Vaporiser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vaporiser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vaporiser/Pods-Vaporiser.debug.xcconfig"; sourceTree = "<group>"; };
-		20A2D8CA456EAB4342C5F716 /* Pods-VaporiserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaporiserUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaporiserUITests/Pods-VaporiserUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		15348E3120776C94004DC534 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		253CB1C3C8E424394F5D4DFE /* Pods-Swifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifter/Pods-Swifter.release.xcconfig"; sourceTree = "<group>"; };
-		64C44399067CE16F35353D11 /* Pods-VaporiserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaporiserUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaporiserUITests/Pods-VaporiserUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7A167559AD95D668015613C5 /* Pods-VaporiserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaporiserTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaporiserTests/Pods-VaporiserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		87E72F22F4904F03FA9131BB /* Pods-Swifter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifter/Pods-Swifter.debug.xcconfig"; sourceTree = "<group>"; };
-		B608B80BDE484CBA3C7D3301 /* Pods-VaporiserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaporiserTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaporiserTests/Pods-VaporiserTests.release.xcconfig"; sourceTree = "<group>"; };
-		B6F81CACEC8687F2CFB1815B /* Pods_VaporiserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaporiserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D62DD356516E7BFDC06CBA7E /* Pods_Vaporiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vaporiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA2EC5E637CE532E5C05A579 /* Pods_VaporiserUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaporiserUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA602631E829424000F40FD /* Swifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA602661E829424000F40FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECA602681E829424000F40FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECA6026B1E829424000F40FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		ECA6026D1E829424000F40FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECF0FFD11E82DD1B00C89C88 /* URL+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Tools.swift"; sourceTree = "<group>"; };
-		F2FAEE8F731C0C7F8A23DAB4 /* Pods-Vaporiser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vaporiser.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vaporiser/Pods-Vaporiser.release.xcconfig"; sourceTree = "<group>"; };
 		FC09C1DC4F3F424842A88254 /* Pods_Swifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,7 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F519E1F864C22A30060BC91 /* Pods_Vaporiser.framework in Frameworks */,
 				CB69918B211A557C61F294BC /* Pods_Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,7 +81,9 @@
 		15116D9320769FBC00BC08D3 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				15116D9B2077477600BC08D3 /* Shell.swift */,
 				15116D9420769FC600BC08D3 /* Dialogs.swift */,
+				15348E3120776C94004DC534 /* LogViewController.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -99,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				15116D982077424800BC08D3 /* ScriptsManager.swift */,
-				15116D9B2077477600BC08D3 /* Shell.swift */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -112,15 +104,16 @@
 			path = Carthage;
 			sourceTree = "<group>";
 		};
+		1539463220777F9B00CC6061 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		72E9CD48B988058A648D5A5C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				160064F3135589AF74964D95 /* Pods-Vaporiser.debug.xcconfig */,
-				F2FAEE8F731C0C7F8A23DAB4 /* Pods-Vaporiser.release.xcconfig */,
-				7A167559AD95D668015613C5 /* Pods-VaporiserTests.debug.xcconfig */,
-				B608B80BDE484CBA3C7D3301 /* Pods-VaporiserTests.release.xcconfig */,
-				20A2D8CA456EAB4342C5F716 /* Pods-VaporiserUITests.debug.xcconfig */,
-				64C44399067CE16F35353D11 /* Pods-VaporiserUITests.release.xcconfig */,
 				87E72F22F4904F03FA9131BB /* Pods-Swifter.debug.xcconfig */,
 				253CB1C3C8E424394F5D4DFE /* Pods-Swifter.release.xcconfig */,
 			);
@@ -130,9 +123,6 @@
 		A236E1E88B4C04DED86BB06A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D62DD356516E7BFDC06CBA7E /* Pods_Vaporiser.framework */,
-				B6F81CACEC8687F2CFB1815B /* Pods_VaporiserTests.framework */,
-				DA2EC5E637CE532E5C05A579 /* Pods_VaporiserUITests.framework */,
 				FC09C1DC4F3F424842A88254 /* Pods_Swifter.framework */,
 			);
 			name = Frameworks;
@@ -161,12 +151,13 @@
 		ECA602651E829424000F40FD /* Swifter */ = {
 			isa = PBXGroup;
 			children = (
+				1539463220777F9B00CC6061 /* Views */,
 				15116D9320769FBC00BC08D3 /* Libs */,
 				15116D80207675BE00BC08D3 /* Projects */,
 				ECA602661E829424000F40FD /* AppDelegate.swift */,
 				ECA602681E829424000F40FD /* Assets.xcassets */,
 				ECA6026A1E829424000F40FD /* MainMenu.xib */,
-				15116D84207678E700BC08D3 /* Vaporiser.xcdatamodeld */,
+				15116D84207678E700BC08D3 /* Swifter.xcdatamodeld */,
 				ECA6026D1E829424000F40FD /* Info.plist */,
 				ECF0FFD11E82DD1B00C89C88 /* URL+Tools.swift */,
 			);
@@ -251,11 +242,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Swifter/Pods-Swifter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Reloaded/Reloaded.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftShell/SwiftShell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reloaded.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftShell.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,9 +303,10 @@
 				15116D992077424800BC08D3 /* ScriptsManager.swift in Sources */,
 				ECA602671E829424000F40FD /* AppDelegate.swift in Sources */,
 				ECF0FFD21E82DD1B00C89C88 /* URL+Tools.swift in Sources */,
+				15348E3220776C94004DC534 /* LogViewController.swift in Sources */,
 				15116D9020769AB000BC08D3 /* NSMenuItem+SPM.swift in Sources */,
 				15116D88207679B200BC08D3 /* ProjectManager.swift in Sources */,
-				15116D86207678E700BC08D3 /* Vaporiser.xcdatamodeld in Sources */,
+				15116D86207678E700BC08D3 /* Swifter.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,13 +466,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		15116D84207678E700BC08D3 /* Vaporiser.xcdatamodeld */ = {
+		15116D84207678E700BC08D3 /* Swifter.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				15116D85207678E700BC08D3 /* Vaporiser.xcdatamodel */,
 			);
 			currentVersion = 15116D85207678E700BC08D3 /* Vaporiser.xcdatamodel */;
-			path = Vaporiser.xcdatamodeld;
+			path = Swifter.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

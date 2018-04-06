@@ -1,15 +1,18 @@
 PODS:
   - Reloaded (1.0.0)
+  - SnapKit (4.0.0)
   - SwiftShell (4.0.0)
 
 DEPENDENCIES:
   - Reloaded
+  - SnapKit
   - SwiftShell
 
 SPEC CHECKSUMS:
   Reloaded: aa974f6bd06b69ae66e6f3c903dc2befe77142b9
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftShell: 8aee162293f63a856801464f4184ddb224d833ce
 
-PODFILE CHECKSUM: 877dbcd5848b27f03da63faa0a122884152ed386
+PODFILE CHECKSUM: caae036e19491bf5097df7fcf3a1158f32031e87
 
 COCOAPODS: 1.4.0

@@ -75,15 +75,15 @@ class CarthageManager {
     // MARK: Actions
     
     @objc func command(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.carthageCommand.project.path!).runAndPrint("carthage", sender.carthageCommand.command)
+        Shell.run(project: sender.carthageCommand.project, "carthage", sender.carthageCommand.command)
     }
     
     @objc func removeCarthage(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("rm", "-rf", sender.projectItem.path("Carthage"))
+        Shell.run(project: sender.carthageCommand.project, "rm", "-rf", sender.projectItem.path("Carthage"))
     }
     
     @objc func removeCarthageResolved(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("rm", sender.projectItem.path("Cartfile.resolved"))
+        Shell.run(project: sender.carthageCommand.project, "rm", sender.projectItem.path("Cartfile.resolved"))
     }
     
     // MARK: Tests

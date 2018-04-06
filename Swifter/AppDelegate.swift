@@ -17,6 +17,7 @@ import SwiftShell
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
+    let popover = NSPopover()
     var statusItem: NSStatusItem?
     
     var menuItems: [NSMenuItem] = []
@@ -38,6 +39,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.statusItem?.image = NSImage(named: NSImage.Name(rawValue: "icon"))
         self.statusItem?.image?.isTemplate = true
         self.statusItem?.action = #selector(AppDelegate.didTapStatusBarIcon)
+        
+        popover.contentViewController = LogViewController.default
+    }
+    
+    // MARK: Console popover
+    
+    @objc func togglePopover(_ sender: Any?) {
+        if popover.isShown {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+    
+    func showPopover(sender: Any?) {
+        if let button = statusItem!.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        }
+    }
+    
+    func closePopover(sender: Any?) {
+        popover.performClose(sender)
     }
     
     // MARK: Actions
@@ -89,6 +112,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: System
     
+    static var main: AppDelegate {
+        return NSApplication.shared.delegate as! AppDelegate
+    }
+    
     @objc func exit(sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
@@ -110,16 +137,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func deleteDerivedData(_ subfolder: String? = nil) {
-        do {
-            var url: URL = self.derivedFolderUrl
-            if subfolder != nil {
-                url.appendPathComponent(subfolder!)
-            }
-            try runAndPrint("rm", "-rf", url.path)
+        var url: URL = self.derivedFolderUrl
+        if subfolder != nil {
+            url.appendPathComponent(subfolder!)
         }
-        catch {
-            Dialog.ok(message: "Error", text: error.localizedDescription)
-        }
+        Shell.run("rm", "-rf", url.path)
     }
     
 }

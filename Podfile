@@ -6,5 +6,6 @@ target 'Swifter' do
   use_frameworks!
   pod 'Reloaded'
   pod 'SwiftShell'
+  pod 'SnapKit'
 
 end

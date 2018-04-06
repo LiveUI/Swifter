@@ -207,83 +207,74 @@ class ProjectManager {
     // MARK: Actions
     
     @objc func deleteBuildFolder(_ sender: NSMenuItem) {
-        try! runAndPrint("rm", "-rf", sender.projectItem.path(".build"))
+        Shell.run("rm", "-rf", sender.projectItem.path(".build"))
     }
     
     @objc func deletePackageResolved(_ sender: NSMenuItem) {
-        try! runAndPrint("rm", sender.projectItem.path("Package.resolved"))
+        Shell.run("rm", sender.projectItem.path("Package.resolved"))
     }
     
     // MARK: Swift
     
     @objc func run(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "run")
+        Shell.run(project: sender.projectItem, "swift", "run")
     }
     
     @objc func build(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "build")
+        Shell.run(project: sender.projectItem, "swift", "build")
     }
     
     @objc func test(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "test")
+        Shell.run(project: sender.projectItem, "swift", "test")
     }
     
     @objc func generateXcode(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "package", "generate-xcodeproj")
+        Shell.run(project: sender.projectItem, "swift", "package", "generate-xcodeproj")
     }
     
     @objc func initPackage(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "package", "init", "--type", "executable")
+        Shell.run(project: sender.projectItem, "swift", "package", "init", "--type", "executable")
     }
     
     @objc func updatePackage(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("swift", "package", "update")
+        Shell.run(project: sender.projectItem, "swift", "package", "update")
     }
     
     // MARK: Vapor
     
     @objc func vaporClean(_ sender: NSMenuItem) {
-        try! Shell.context(for: sender.projectItem.path!).runAndPrint("vapor", "clean", "-y")
+        Shell.run(project: sender.projectItem, "vapor", "clean", "-y")
     }
     
     @objc func vaporGenerateXcode(_ sender: NSMenuItem) {
-        try! Shell.context(for: sender.projectItem.path!).runAndPrint("vapor", "xcode", "--verbose", "-y")
+        Shell.run(project: sender.projectItem, "vapor", "xcode", "--verbose", "-y")
     }
     
     @objc func vaporUpgradeAll(_ sender: NSMenuItem) {
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("vapor", "clean", "-y")
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("rm", "-rf", ".build")
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("rm", "Package.resolved")
-        try? Shell.context(for: sender.projectItem.path!).runAndPrint("vapor", "xcode", "--verbose", "-y")
+        Shell.run(project: sender.projectItem, "vapor", "clean", "-y")
+        Shell.run(project: sender.projectItem, "rm", "-rf", ".build")
+        Shell.run(project: sender.projectItem, "rm", "Package.resolved")
+        Shell.run(project: sender.projectItem, "vapor", "xcode", "--verbose", "-y")
     }
     
     // MARK: Pods
     
     @objc func podInstall(_ sender: NSMenuItem) {
-        try! Shell.context(for: sender.projectItem.path!).runAndPrint("pod", "install")
+        Shell.run(project: sender.projectItem, "pod", "install")
     }
     
     @objc func podUpdate(_ sender: NSMenuItem) {
-        try! Shell.context(for: sender.projectItem.path!).runAndPrint("pod", "update")
+        Shell.run(project: sender.projectItem, "pod", "update")
     }
     
     @objc func removePodLock(_ sender: NSMenuItem) {
-        try! Shell.context(for: sender.projectItem.path!).runAndPrint("rm", "Podfile.lock")
+        Shell.run(project: sender.projectItem, "rm", "Podfile.lock")
     }
     
     // MARK: Scripts
     
     @objc func runScript(_ sender: NSMenuItem) {
-        do {
-            try Shell.context(for: sender.script.project.path!).runAndPrint(sender.script.path)
-        } catch {
-            if let err = error as? CommandError {
-                Dialog.ok(message: "Error", text: err.description)
-            } else {
-                print(error)
-                Dialog.ok(message: "Error", text: error.localizedDescription)
-            }
-        }
+        Shell.run(project: sender.script.project, sender.script.path)
     }
     
     // MARK: System
