@@ -1,7 +1,12 @@
 # Swifter
-macOS tool to clear Derived Data folder written in Swift
+macOS tool that helps you manage your projects (Xcode, SPM, CocoaPods, Carthage, etc ...) and gives you quick access to Derived Data cleaning and management.
 
-![Screenshot](/screenshot-menu.png?raw=true "Screenshot")
+<table>
+	<tr>
+		<td><img src="/Other/screenshot-menu1.png?raw=true" alt="Screenshot 1" /></td>
+		<td><img src="/Other/screenshot-menu2.png?raw=true" alt="Screenshot 2" /></td>
+	<tr>
+</table>
 
 # Installation
 Clone and run, it's not complicated at all :)
