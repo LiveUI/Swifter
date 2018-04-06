@@ -66,6 +66,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Actions
     
     @objc func didTapStatusBarIcon() {
+        if Shell.running {
+            return
+        }
+        
         var menu: NSMenu = NSMenu()
         
         spmManager.addMenu(to: &menu)
@@ -98,9 +102,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         menu.addItem(NSMenuItem.separator())
         
+        item = NSMenuItem(title: "Project on Github.com ...", action: #selector(github), keyEquivalent: "")
+        menu.addItem(item)
+        
+        menu.addItem(NSMenuItem.separator())
+        
         item = NSMenuItem(title: "Quit", action: #selector(exit), keyEquivalent: "")
         menu.addItem(item)
-
+        
         self.statusItem?.popUpMenu(menu)
     }
     
@@ -114,6 +123,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     static var main: AppDelegate {
         return NSApplication.shared.delegate as! AppDelegate
+    }
+    
+    @objc func github(sender: NSMenuItem) {
+        if let url = URL(string: "https://github.com/LiveUI/Swifter") {
+            NSWorkspace.shared.open(url)
+        }
     }
     
     @objc func exit(sender: NSMenuItem) {

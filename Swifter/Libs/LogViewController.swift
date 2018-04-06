@@ -37,8 +37,11 @@ class LogViewController: NSViewController {
         textField.snp.makeConstraints { (make) in
             make.top.left.equalTo(10)
             make.right.bottom.equalTo(-10)
-            make.width.lessThanOrEqualTo(500)
-            make.height.lessThanOrEqualTo(500)
+            make.width.lessThanOrEqualTo(700)
+            make.height.lessThanOrEqualTo(550)
+            
+            make.width.greaterThanOrEqualTo(400)
+            make.height.greaterThanOrEqualTo(300)
         }
         
         
@@ -49,7 +52,7 @@ class LogViewController: NSViewController {
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
         
-        AppDelegate.main.togglePopover(self)
+        AppDelegate.main.closePopover(sender: self)
     }
     
 }
