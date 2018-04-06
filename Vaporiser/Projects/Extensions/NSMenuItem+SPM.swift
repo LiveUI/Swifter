@@ -16,6 +16,10 @@ extension NSMenuItem {
         return representedObject as! SPM
     }
     
+    var carthageCommand: CarthageManager.Command {
+        return representedObject as! CarthageManager.Command
+    }
+    
     var script: Script {
         return representedObject as! Script
     }

@@ -17,6 +17,8 @@ extension SPM: Entity { }
 
 class ProjectManager {
     
+    let carthageManager = CarthageManager()
+    
     static func all() -> [SPM] {
         return (try? SPM.query.sort(by: "name").all()) ?? []
     }
@@ -28,7 +30,7 @@ class ProjectManager {
         for project in ProjectManager.all() {
             let spmItem = NSMenuItem(title: project.name!, action: nil, keyEquivalent: "")
             
-            let subMenu = NSMenu(title: project.name!)
+            var subMenu = NSMenu(title: project.name!)
             
             var exists = buildExists(for: project.path!)
             item = NSMenuItem(title: "Delete .build folder", action: exists ? #selector(deleteBuildFolder) : nil, keyEquivalent: "")
@@ -63,15 +65,15 @@ class ProjectManager {
                 
                 subMenu.addItem(NSMenuItem.separator())
                 
-                item = NSMenuItem(title: "Swift run", action: #selector(run), keyEquivalent: "")
+                item = NSMenuItem(title: "swift run", action: #selector(run), keyEquivalent: "")
                 item.target = self
                 item.representedObject = project
                 subMenu.addItem(item)
-                item = NSMenuItem(title: "Swift build", action: #selector(build), keyEquivalent: "")
+                item = NSMenuItem(title: "swift build", action: #selector(build), keyEquivalent: "")
                 item.target = self
                 item.representedObject = project
                 subMenu.addItem(item)
-                item = NSMenuItem(title: "Swift test", action: #selector(test), keyEquivalent: "")
+                item = NSMenuItem(title: "swift test", action: #selector(test), keyEquivalent: "")
                 item.target = self
                 item.representedObject = project
                 subMenu.addItem(item)
@@ -86,14 +88,19 @@ class ProjectManager {
                 subMenu.addItem(item)
             }
             
+            carthageManager.addMenu(to: &subMenu, project: project)
+            
             if podfileExists(for: project.path!) {
                 subMenu.addItem(NSMenuItem.separator())
                 
-                item = NSMenuItem(title: "Pod install", action: #selector(podInstall), keyEquivalent: "")
+                var item = NSMenuItem(title: "CocoaPods", action: nil, keyEquivalent: "")
+                subMenu.addItem(item)
+                
+                item = NSMenuItem(title: "pod install", action: #selector(podInstall), keyEquivalent: "")
                 item.target = self
                 item.representedObject = project
                 subMenu.addItem(item)
-                item = NSMenuItem(title: "Pod update", action: #selector(podUpdate), keyEquivalent: "")
+                item = NSMenuItem(title: "pod update", action: #selector(podUpdate), keyEquivalent: "")
                 item.target = self
                 item.representedObject = project
                 subMenu.addItem(item)

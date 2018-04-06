@@ -45,6 +45,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func didTapStatusBarIcon() {
         var menu: NSMenu = NSMenu()
         
+        spmManager.addMenu(to: &menu)
+        
+        menu.addItem(NSMenuItem.separator())
+        
         var item: NSMenuItem = NSMenuItem(title: "Derived data", action: nil, keyEquivalent: "")
         menu.addItem(item)
         
@@ -55,13 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(item)
         
         menu.addItem(NSMenuItem.separator())
-        
-        spmManager.addMenu(to: &menu)
-        
-        menu.addItem(NSMenuItem.separator())
-        
-        item = NSMenuItem(title: "Modules", action: nil, keyEquivalent: "")
-        menu.addItem(item)
         
         self.subDirectories = self.derivedFolderUrl.subDirectories
         self.menuItems = []
