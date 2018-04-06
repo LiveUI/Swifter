@@ -49,11 +49,11 @@ class ProjectManager {
                 if Shell.context.run("which", "vapor").stdout.count > 5 {
                     subMenu.addItem(NSMenuItem.separator())
                     
-                    item = NSMenuItem(title: "Vapor clean", action: #selector(vaporClean), keyEquivalent: "")
+                    item = NSMenuItem(title: "vapor clean", action: #selector(vaporClean), keyEquivalent: "")
                     item.target = self
                     item.representedObject = project
                     subMenu.addItem(item)
-                    item = NSMenuItem(title: "Vapor Xcode", action: #selector(vaporGenerateXcode), keyEquivalent: "")
+                    item = NSMenuItem(title: "vapor xcode", action: #selector(vaporGenerateXcode), keyEquivalent: "")
                     item.target = self
                     item.representedObject = project
                     subMenu.addItem(item)
@@ -90,7 +90,7 @@ class ProjectManager {
             
             carthageManager.addMenu(to: &subMenu, project: project)
             
-            if podfileExists(for: project.path!) {
+            if podfileExists(for: project.path!) && Shell.context.run("which", "pod").stdout.count > 5 {
                 subMenu.addItem(NSMenuItem.separator())
                 
                 var item = NSMenuItem(title: "CocoaPods", action: nil, keyEquivalent: "")

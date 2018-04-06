@@ -16,6 +16,8 @@ Clone and run, it's not complicated at all :)
 
 In order to use `carthage` you need to have them installed on your system, same applies to any other functionality you may see on the screenshots but they won't show in the app :)
 
+To make the app start with each login, open <b>System Preferences</b> -> Users & Groups -> Login Items -> + (Add an application to the list)
+
 ## Author
 
 Ondrej Rafaj (@rafiki270 on twitter and Vapor slack)

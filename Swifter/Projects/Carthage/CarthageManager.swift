@@ -22,7 +22,7 @@ class CarthageManager {
     }
     
     func addMenu(to menu: inout NSMenu, project: Project) {
-        if cartfileExists(for: project.path!) {
+        if cartfileExists(for: project.path!) && Shell.context.run("which", "carthage").stdout.count > 5 {
             menu.addItem(NSMenuItem.separator())
             
             var item = NSMenuItem(title: "Carthage", action: nil, keyEquivalent: "")
