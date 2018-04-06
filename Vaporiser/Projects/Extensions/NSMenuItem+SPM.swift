@@ -12,8 +12,12 @@ import AppKit
 
 extension NSMenuItem {
     
-    var spmItem: SPM {
+    var projectItem: SPM {
         return representedObject as! SPM
+    }
+    
+    var script: Script {
+        return representedObject as! Script
     }
     
 }

@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return url
     }
     
-    var spmManager = SPMManager()
+    var spmManager = ProjectManager()
     
     // MARK: Application delegate methods
     
@@ -82,6 +82,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(item)
 
         self.statusItem?.popUpMenu(menu)
+    }
+    
+    // MARK: Terminal stuff
+    
+    private func runTerminal(command: String) {
+        run(bash: "open -b com.apple.terminal ls /")
     }
     
     // MARK: System
