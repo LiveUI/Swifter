@@ -5,6 +5,7 @@ macOS tool that helps you manage your projects (Xcode, Project, CocoaPods, Carth
 	<tr>
 		<td><img src="/Other/screenshot-menu1.png?raw=true" alt="Screenshot 1" /></td>
 		<td><img src="/Other/screenshot-menu2.png?raw=true" alt="Screenshot 2" /></td>
+		<td><img src="/Other/screenshot-console.png?raw=true" alt="Screenshot 3" /></td>
 	<tr>
 </table>
 
