@@ -18,7 +18,7 @@ In order to use `carthage` you need to have them installed on your system, same 
 
 ## Author
 
-Ondrej Rafaj (rafiki270 on twitter and Vapor slack)
+Ondrej Rafaj (@rafiki270 on twitter and Vapor slack)
 
 ## Publishing on AppStore
 Even though this is an MIT license, I would like to ask you to not to publish a copy on the Apple AppStore 🍏 as our copy is on the way there. Link will follow once approved.
